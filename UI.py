@@ -1,10 +1,18 @@
+# -*- coding: utf-8 -*-
+
+###----Document폴더 내에서 maya -> version -> script 폴더에 스크립트 파일들을 복사한 후 script 수정을 해야함
+
+
+
 import maya.cmds as cm
 import pymel.core as pm
 import os, sys
-#import HDR_Browser as hb
+from lookdev import HDR_Browser as hb
 
 class UI:
     def __init__(self):
+
+        self.hb = hb
 
         ## 상수값 설정 - 버전, 파일제목
         Version = "v001"
@@ -68,6 +76,7 @@ class UI:
         cm.rowColumnLayout(adjustableColumn=2, numberOfColumns=3)
         self.setIconBttn()
 
+
         cm.setParent('..')
         cm.setParent(MainRow)
 
@@ -75,5 +84,33 @@ class UI:
         cm.text(" Email - dhfpswl704@gmail.com ", align="right")
 
         cm.showWindow(WinName)
+
+
+    def setIconBttn(self):
+        """TODO: HDR_Browser에서 가져오는 인스턴스 메소드, 속성들 정리해야 함.
+        """
+
+        """
+        ImageList에 HDRI 이미지 올리기
+        :return:
+        """
+        width = 200
+        height = 100
+
+        a = self.hb.MiniFullPathList
+        fileNameList = self.hb.getFileNameList(a)
+        conformFileNameList = []
+        for filename in fileNameList:
+            if self.hb.compareFileExt(filename)==1:
+                conformFileNameList.append(filename.split(".")[0])
+            else:
+                pass
+
+        getFileData = dict(zip(conformFileNameList, self.hb.MiniFullPathList))
+        #print(getFileData)
+
+        for key, value in getFileData.items():
+            cm.iconTextButton(style="iconAndTextVertical", label=key, scaleIcon=True,
+                                image1=value, w=width, h=height, command="")
 
 UI()

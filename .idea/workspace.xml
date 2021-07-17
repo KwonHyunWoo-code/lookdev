@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="25fc74f1-41a2-42ec-803d-d0138ec7112b" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +43,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/UI.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -50,15 +51,27 @@
       <recent name="C:\Users\Administrator\Documents\maya\scripts\lookdev" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.HDR_Browser">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="MayaCharm.Maya2020">
+    <configuration name="Maya2020" type="MAYACHARM_RUN_CONFIGURATION" factoryName="MayaCharm Configuration Factory">
+      <option name="mayaSdkPath" value="C:\Program Files\Autodesk\Maya2020\bin\mayapy.exe" />
+      <option name="scriptFilePath" value="C:\Users\dhfps\Documents\maya\2020\scripts\lookdev\UI.py" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="MAYACHARM_RUN_CONFIGURATION" factoryName="MayaCharm Configuration Factory">
       <option name="mayaSdkPath" value="C:\Program Files\Autodesk\Maya2018\bin\mayapy.exe" />
       <option name="scriptFilePath" value="C:\Users\Administrator\Documents\maya\scripts\lookdev\Main.py" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Maya2020" type="MAYACHARM_RUN_CONFIGURATION" factoryName="MayaCharm Configuration Factory">
-      <option name="mayaSdkPath" value="C:\Program Files\Autodesk\Maya2020\bin\mayapy.exe" />
-      <option name="scriptFilePath" value="C:\Users\dhfps\Documents\maya\scripts\lookdev\HDR_Browser.py" />
       <method v="2" />
     </configuration>
     <configuration name="ConvertHDRtoJPG" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -104,6 +117,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="MayaCharm.Maya2020" />
       <item itemvalue="Python.HDR_Browser" />
       <item itemvalue="Python.ConvertHDRtoJPG" />
     </list>
@@ -113,7 +127,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -142,11 +156,7 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="CUSTOM_BOOLEAN_PROPERTIES">
-                <map>
-                  <entry key="Show.Git.Branches" value="false" />
-                </map>
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>

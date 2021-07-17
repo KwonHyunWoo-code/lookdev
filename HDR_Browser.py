@@ -5,7 +5,7 @@ import pymel.core as pm
 import os, sys
 
 
-class HDR_Browser:
+class Browser:
 
     def __init__(self):
 
@@ -15,7 +15,7 @@ class HDR_Browser:
         ### HDR_SOURCE_BASEPATH 는 HDR 이미지가 있는 상위 폴더
         ###
 
-        self.SourceDrive = "D:\\\\"
+        self.SourceDrive = "E:\\\\"
         self.HDR_SOURCE_BASEPATH = self.SourceDrive + "HDRI\\"
         #self.HDR_FOLDER = os.path.dirname(os.path.abspath(__file__))
         #self.HDR_MINI_FORDER = os.path.join(self.HDR_SOURCE_BASEPATH, "Mini_").replace("\\", "/")
@@ -32,11 +32,11 @@ class HDR_Browser:
 
         ### HDRI 폴더 내에 하위폴더 경로 리스트
         self.foundFolder_Path = self.FindFolder(self.HDR_SOURCE_BASEPATH)
-        print(self.foundFolder_Path)
+        #print(self.foundFolder_Path)
 
         ### HDRI MINI 폴더 경로
         self.MiniDir = self.ConformMiniFolder(self.foundFolder_Path)[0]
-        #print(self.MiniDir)
+        print(self.MiniDir)
 
         ### HDRI MINI 폴더 내에 있는 파일 리스트
         self.MiniFullPathList = self.getFilePath(str(self.MiniDir))
@@ -52,8 +52,9 @@ class HDR_Browser:
         # print(self.FindFilesList(str(self.MiniDir)))
         # print(self.getFilePath(str(self.MiniDir)))
 
+    def test(self):
+        print("test")
 
-        self.UI()
 
     def getFolderBaseName(self, folderlist):
         """
@@ -170,28 +171,28 @@ class HDR_Browser:
 
 
 
-    def setIconBttn(self):
-        """
-        ImageList에 HDRI 이미지 올리기
-        :return:
-        """
-        width = 200
-        height = 100
-
-        fileNameList = self.getFileNameList(self.MiniFullPathList)
-        conformFileNameList = []
-        for filename in fileNameList:
-            if self.compareFileExt(filename)==1:
-                conformFileNameList.append(filename.split(".")[0])
-            else:
-                pass
-
-        getFileData = dict(zip(conformFileNameList, self.MiniFullPathList))
-        #print(getFileData)
-
-        for key, value in getFileData.items():
-            cmds.iconTextButton(style="iconAndTextVertical", label=key, scaleIcon=True,
-                                image1=value, w=width, h=height, command="")
+    # def setIconBttn(self):
+    #     """
+    #     ImageList에 HDRI 이미지 올리기
+    #     :return:
+    #     """
+    #     width = 200
+    #     height = 100
+    #
+    #     fileNameList = self.getFileNameList(self.MiniFullPathList)
+    #     conformFileNameList = []
+    #     for filename in fileNameList:
+    #         if self.compareFileExt(filename)==1:
+    #             conformFileNameList.append(filename.split(".")[0])
+    #         else:
+    #             pass
+    #
+    #     getFileData = dict(zip(conformFileNameList, self.MiniFullPathList))
+    #     #print(getFileData)
+    #
+    #     for key, value in getFileData.items():
+    #         cmds.iconTextButton(style="iconAndTextVertical", label=key, scaleIcon=True,
+    #                             image1=value, w=width, h=height, command="")
 
     def folderListSelectCmd(self):
         pass
