@@ -7,16 +7,20 @@ import os, sys
 
 class Browser:
 
+
+    ## 파일 경로 설정 및 sourceimages 폴더 경로 설정
+
+    ### SourceDrive 는 해당 드라이브
+    ### HDR_SOURCE_BASEPATH 는 HDR 이미지가 있는 상위 폴더
+
+    SourceDrive = "E:\\\\"
+    HDR_SOURCE_BASEPATH = SourceDrive + "HDRI\\"
+
+
     def __init__(self):
 
-        ## 파일 경로 설정 및 sourceimages 폴더 경로 설정
-
-        ### SourceDrive 는 해당 드라이브
-        ### HDR_SOURCE_BASEPATH 는 HDR 이미지가 있는 상위 폴더
-        ###
-
-        self.SourceDrive = "E:\\\\"
-        self.HDR_SOURCE_BASEPATH = self.SourceDrive + "HDRI\\"
+        # self.SourceDrive = "E:\\\\"
+        # self.HDR_SOURCE_BASEPATH = self.SourceDrive + "HDRI\\"
         #self.HDR_FOLDER = os.path.dirname(os.path.abspath(__file__))
         #self.HDR_MINI_FORDER = os.path.join(self.HDR_SOURCE_BASEPATH, "Mini_").replace("\\", "/")
         #print(self.HDR_MINI_FORDER)
@@ -52,7 +56,7 @@ class Browser:
         # print(self.FindFilesList(str(self.MiniDir)))
         # print(self.getFilePath(str(self.MiniDir)))
 
-    def test(self):
+    def getMiniFullPathList(self):
         print("test")
 
 
@@ -219,5 +223,3 @@ class Browser:
     def setHDRTex(self):
 
         pass
-
-HDR_Browser()

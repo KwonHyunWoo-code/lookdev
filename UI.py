@@ -7,12 +7,12 @@
 import maya.cmds as cm
 import pymel.core as pm
 import os, sys
-from lookdev import HDR_Browser as hb
+from lookdev import HDR_Browser
 
-class UI:
+class BuildUI(HDR_Browser.Browser):
     def __init__(self):
-
-        self.hb = hb
+        HDR_Browser.Browser.__init__(self)
+        self.hb = HDR_Browser.Browser
 
         ## 상수값 설정 - 버전, 파일제목
         Version = "v001"
@@ -97,8 +97,8 @@ class UI:
         width = 200
         height = 100
 
-        a = self.hb.MiniFullPathList
-        fileNameList = self.hb.getFileNameList(a)
+
+        fileNameList = self.hb.getFileNameList(self.hb.MiniFullPathList)
         conformFileNameList = []
         for filename in fileNameList:
             if self.hb.compareFileExt(filename)==1:
@@ -113,4 +113,6 @@ class UI:
             cm.iconTextButton(style="iconAndTextVertical", label=key, scaleIcon=True,
                                 image1=value, w=width, h=height, command="")
 
-UI()
+BuildUI()
+
+
