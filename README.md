@@ -1,8 +1,8 @@
 # VrayLookDev
 
-Email : dhfpswl704@gmail.com
-version : v.1.0.0
-author by KwonHyunWoo
+Email : dhfpswl704@gmail.com 
+version : v.1.0.0 
+author by KwonHyunWoo 
 
 
 <<<install>>>
