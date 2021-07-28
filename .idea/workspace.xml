@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25fc74f1-41a2-42ec-803d-d0138ec7112b" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="25fc74f1-41a2-42ec-803d-d0138ec7112b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/lookdev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lookdev.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColorChecker.py" beforeDir="false" afterPath="$PROJECT_DIR$/ColorChecker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HDR_Browser.py" beforeDir="false" afterPath="$PROJECT_DIR$/HDR_Browser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +33,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1omgSvgNCV8WcgmzUgK2tjwGmPF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -35,7 +45,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/UI.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -43,27 +53,15 @@
       <recent name="C:\Users\Administrator\Documents\maya\scripts\lookdev" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="MayaCharm.Maya2020">
-    <configuration name="Maya2020" type="MAYACHARM_RUN_CONFIGURATION" factoryName="MayaCharm Configuration Factory">
-      <option name="mayaSdkPath" value="C:\Program Files\Autodesk\Maya2020\bin\mayapy.exe" />
-      <option name="scriptFilePath" value="C:\Users\dhfps\Documents\maya\2020\scripts\lookdev\UI.py" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.UI">
     <configuration default="true" type="MAYACHARM_RUN_CONFIGURATION" factoryName="MayaCharm Configuration Factory">
       <option name="mayaSdkPath" value="C:\Program Files\Autodesk\Maya2018\bin\mayapy.exe" />
       <option name="scriptFilePath" value="C:\Users\Administrator\Documents\maya\scripts\lookdev\Main.py" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Maya2020" type="MAYACHARM_RUN_CONFIGURATION" factoryName="MayaCharm Configuration Factory">
+      <option name="mayaSdkPath" value="C:\Program Files\Autodesk\Maya2020\bin\mayapy.exe" />
+      <option name="scriptFilePath" value="C:\Users\dhfps\Documents\maya\2020\scripts\lookdev\UI.py" />
       <method v="2" />
     </configuration>
     <configuration name="ConvertHDRtoJPG" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -87,19 +85,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="HDR_Browser" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="UI" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="lookdev" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\dhfps\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="SDK_HOME" value="C:\Program Files\Autodesk\Maya2019\bin\mayapy.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HDR_Browser.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -109,9 +107,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="MayaCharm.Maya2020" />
-      <item itemvalue="Python.HDR_Browser" />
       <item itemvalue="Python.ConvertHDRtoJPG" />
+      <item itemvalue="Python.UI" />
     </list>
     <recent_temporary>
       <list>
@@ -119,7 +116,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -147,13 +144,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
