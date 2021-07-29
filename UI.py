@@ -8,11 +8,13 @@ import maya.cmds as cm
 import pymel.core as pm
 import os, sys
 from lookdev import HDR_Browser
+from lookdev import ColorChecker as Colc
 
-class BuildUI(HDR_Browser.Browser):
+class BuildUI:
     def __init__(self):
-        HDR_Browser.Browser.__init__(self)
-        self.hb = HDR_Browser.Browser
+
+        self.hb = HDR_Browser.Browser()
+        self.Colc = Colc.ColorCheckerRig()
 
         ## 상수값 설정 - 버전, 파일제목
         Version = "v001"
@@ -40,7 +42,7 @@ class BuildUI(HDR_Browser.Browser):
         cm.rowLayout(numberOfColumns=5)
         cm.radioButtonGrp(label="ColorChecker", labelArray3=['Type1_Col', 'Type2_Ball', 'Type3_Col+Ball'],
                             numberOfRadioButtons=3)
-        cm.button(label="Apply", command="")
+        cm.button(label="Apply", command=self.colorCheckerApply())
 
         pm.button(label="Create_Env_LT", command="")
 
@@ -55,11 +57,10 @@ class BuildUI(HDR_Browser.Browser):
 
         FolderListTab = cm.tabLayout('FolderListTabLO', innerMarginWidth=5, innerMarginHeight=5, childResizable=True)
         FolderListColumn = cm.columnLayout(adjustableColumn=True)
-        FolderList = cm.textScrollList(allowMultiSelection=False, deselectAll=True,
-                                         append=["", '--------------------', 'three', 'four',
-                                                 'five', 'six', 'seven', 'eight', 'nine', 'ten',
-                                                 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen'],
-                                         height=WinSize[1], parent=FolderListColumn)
+
+###        """TODO: select item command"""
+        FolderList = cm.textScrollList(numberOfRows=8, allowMultiSelection=False, deselectAll=True,
+                                         append=self.hb.foundFolder_NameList, font="plainLabelFont", height=WinSize[1], parent=FolderListColumn, selectCommand="")
 
         cm.setParent('..')
         cm.setParent('..')
@@ -71,9 +72,10 @@ class BuildUI(HDR_Browser.Browser):
         ImageListTab = cm.tabLayout('ImageListTabLO', innerMarginWidth=5, innerMarginHeight=5, childResizable=True)
         ImageListColumn = cm.columnLayout(adjustableColumn=True)
         ImageList = cm.scrollLayout(verticalScrollBarThickness=16, height=WinSize[1])
-        cm.tabLayout(ImageListTab, edit=True, tabLabel=(ImageListColumn, 'ImageList'))
 
-        cm.rowColumnLayout(adjustableColumn=2, numberOfColumns=3)
+        cm.tabLayout(ImageListTab, edit=True, tabLabel=(ImageListColumn, 'ImageList'))
+        cm.rowColumnLayout(adjustableColumn=2, numberOfColumns=WinSize[1]/100)
+
         self.setIconBttn()
 
 
@@ -86,10 +88,12 @@ class BuildUI(HDR_Browser.Browser):
         cm.showWindow(WinName)
 
 
-    def setIconBttn(self):
-        """TODO: HDR_Browser에서 가져오는 인스턴스 메소드, 속성들 정리해야 함.
-        """
+    def colorCheckerApply(self, *args):
 
+        self.Colc.deleteAll()
+        self.Colc.ColorCheckerRig()
+
+    def setIconBttn(self):
         """
         ImageList에 HDRI 이미지 올리기
         :return:
@@ -98,21 +102,30 @@ class BuildUI(HDR_Browser.Browser):
         height = 100
 
 
-        fileNameList = self.hb.getFileNameList(self.hb.MiniFullPathList)
+        fileNameList = self.hb.getFileNameList(self.hb.MiniFilePathList)
         conformFileNameList = []
+
+        ### 반복 횟수
+        cnt = 0
+
         for filename in fileNameList:
             if self.hb.compareFileExt(filename)==1:
                 conformFileNameList.append(filename.split(".")[0])
             else:
                 pass
 
-        getFileData = dict(zip(conformFileNameList, self.hb.MiniFullPathList))
+        getFileData = dict(zip(conformFileNameList, self.hb.MiniFilePathList))
         #print(getFileData)
 
         for key, value in getFileData.items():
             cm.iconTextButton(style="iconAndTextVertical", label=key, scaleIcon=True,
                                 image1=value, w=width, h=height, command="")
 
-BuildUI()
+            cnt += 1
+
+        return cnt
+
+
+
 
 

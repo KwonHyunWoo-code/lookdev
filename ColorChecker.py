@@ -4,7 +4,7 @@ import maya.cmds as cmds
 import os, sys
 
 
-class ColorChecker:
+class ColorCheckerRig:
 
     def __init__(self):
         self.cmds = cmds
@@ -42,19 +42,21 @@ class ColorChecker:
 
 
         ## 그룹설정
-        ColorCheckerGRP = cmds.group(empty=True, name="ColorCheckerGRP")
+        self.ColorChecker_GRP = cmds.group(empty=True, name="ColorCheckerGRP")
         ColorChecker_CTRL = cmds.group(empty=True, name="ColorCheckerCTRL")
         ColorChecker_Geo_GRP = cmds.group(empty=True, name="ColorChecker_Geo_GRP")
 
 
-        ## 그룹 parent 설정
-        self.setParents(ColorChecker_Geo_GRP, Ref_ColorPlane)
-        self.setParents(ColorChecker_Geo_GRP, ColorPlane)
-        self.setParents(ColorChecker_Geo_GRP, ChromeBall)
-        self.setParents(ColorChecker_Geo_GRP, GreyBall)
 
-        self.setParents(ColorCheckerGRP, ColorChecker_Geo_GRP)
-        self.setParents(ColorCheckerGRP, ColorChecker_CTRL)
+
+        ## 그룹 parent 설정
+        self.setParents(ColorChecker_Geo_GRP, Ref_ColorPlane[0])
+        self.setParents(ColorChecker_Geo_GRP, ColorPlane[0])
+        self.setParents(ColorChecker_Geo_GRP, ChromeBall[0])
+        self.setParents(ColorChecker_Geo_GRP, GreyBall[0])
+
+        self.setParents(self.ColorChecker_GRP, ColorChecker_Geo_GRP)
+        self.setParents(self.ColorChecker_GRP, ColorChecker_CTRL)
 
 
         ## 전체 boundbox 크기 및 min, max 값 구하기
@@ -82,34 +84,36 @@ class ColorChecker:
 
         ## 해당 오브젝트에 쉐이더 적용하기
         self.makeVrayChromeShdr()
-        cmds.sets(ChromeBall, edit=True, forceElement="VRayC_SG")
+        cmds.sets(ChromeBall[0], edit=True, forceElement="VRayC_SG")
 
         self.makeVrayGreyShdr()
-        cmds.sets(GreyBall, edit=True, forceElement="VRayG_SG")
+        cmds.sets(GreyBall[0], edit=True, forceElement="VRayG_SG")
 
         self.makeSurfaceColorCheckShdr()
-        cmds.sets(ColorPlane, edit=True, forceElement="SurfaceCol_SG")
+        cmds.sets(ColorPlane[0], edit=True, forceElement="SurfaceCol_SG")
 
         self.makeVrayColorCheckShdr()
-        cmds.sets(Ref_ColorPlane, edit=True, forceElement="VRayCol_SG")
+        cmds.sets(Ref_ColorPlane[0], edit=True, forceElement="VRayCol_SG")
 
 
 
         ## 전체 그룹의 attribute hide / new attribute add
 
-        cmds.setAttr(ColorCheckerGRP + ".tx", keyable=False, channelBox=False)
-        cmds.setAttr(ColorCheckerGRP + ".ty", keyable=False, channelBox=False)
-        cmds.setAttr(ColorCheckerGRP + ".tz", keyable=False, channelBox=False)
-        cmds.setAttr(ColorCheckerGRP + ".rx", keyable=False, channelBox=False)
-        cmds.setAttr(ColorCheckerGRP + ".ry", keyable=False, channelBox=False)
-        cmds.setAttr(ColorCheckerGRP + ".rz", keyable=False, channelBox=False)
-        cmds.setAttr(ColorCheckerGRP + ".sx", keyable=False, channelBox=False)
-        cmds.setAttr(ColorCheckerGRP + ".sy", keyable=False, channelBox=False)
-        cmds.setAttr(ColorCheckerGRP + ".sz", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".tx", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".ty", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".tz", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".rx", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".ry", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".rz", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".sx", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".sy", keyable=False, channelBox=False)
+        cmds.setAttr(self.ColorChecker_GRP + ".sz", keyable=False, channelBox=False)
 
-        cmds.addAttr(ColorCheckerGRP, longName="Checker_Type", attributeType='long')
-        cmds.setAttr(ColorCheckerGRP + ".Checker_Type", edit=True, keyable=True)
+        cmds.addAttr(self.ColorChecker_GRP, longName="Checker_Type", attributeType='long')
+        cmds.setAttr(self.ColorChecker_GRP + ".Checker_Type", edit=True, keyable=True)
 
+
+        self.deleteAll()
 
     def setParents(self, src, tgt):
         cmds.parent(tgt, src, r=True)
@@ -195,26 +199,26 @@ class ColorChecker:
         CreateFile = cmds.shadingNode('file', name="ColorCheckImgFile", asTexture=True, isColorManaged=True)
         cmds.setAttr( CreateFile + ".filterType", 0)
         cmds.setAttr( CreateFile + ".fileTextureName", self.COLORCHECKIMGPATH + "/" + "sRGB_ColorChecker_Chart.jpg", type="string")
-        Create2dTex = cmds.shadingNode('place2dTexture', name="place2dTexture", asUtility=True)
+        Create2dTex = cmds.shadingNode('place2dTexture', name="place2dTexture_ColCh", asUtility=True)
 
-        cmds.connectAttr('place2dTexture.coverage', 'ColorCheckImgFile.coverage')
-        cmds.connectAttr('place2dTexture.translateFrame', 'ColorCheckImgFile.translateFrame')
-        cmds.connectAttr('place2dTexture.rotateFrame', 'ColorCheckImgFile.rotateFrame')
-        cmds.connectAttr('place2dTexture.mirrorU', 'ColorCheckImgFile.mirrorU')
-        cmds.connectAttr('place2dTexture.mirrorV', 'ColorCheckImgFile.mirrorV')
-        cmds.connectAttr('place2dTexture.stagger', 'ColorCheckImgFile.stagger')
-        cmds.connectAttr('place2dTexture.wrapU', 'ColorCheckImgFile.wrapU')
-        cmds.connectAttr('place2dTexture.wrapV', 'ColorCheckImgFile.wrapV')
-        cmds.connectAttr('place2dTexture.repeatUV', 'ColorCheckImgFile.repeatUV')
-        cmds.connectAttr('place2dTexture.offset', 'ColorCheckImgFile.offset')
-        cmds.connectAttr('place2dTexture.rotateUV', 'ColorCheckImgFile.rotateUV')
-        cmds.connectAttr('place2dTexture.noiseUV', 'ColorCheckImgFile.noiseUV')
-        cmds.connectAttr('place2dTexture.vertexUvOne', 'ColorCheckImgFile.vertexUvOne')
-        cmds.connectAttr('place2dTexture.vertexUvTwo', 'ColorCheckImgFile.vertexUvTwo')
-        cmds.connectAttr('place2dTexture.vertexUvThree', 'ColorCheckImgFile.vertexUvThree')
-        cmds.connectAttr('place2dTexture.vertexCameraOne', 'ColorCheckImgFile.vertexCameraOne')
-        cmds.connectAttr('place2dTexture.outUV', 'ColorCheckImgFile.uv')
-        cmds.connectAttr('place2dTexture.outUvFilterSize', 'ColorCheckImgFile.uvFilterSize')
+        cmds.connectAttr('place2dTexture_ColCh.coverage', 'ColorCheckImgFile.coverage')
+        cmds.connectAttr('place2dTexture_ColCh.translateFrame', 'ColorCheckImgFile.translateFrame')
+        cmds.connectAttr('place2dTexture_ColCh.rotateFrame', 'ColorCheckImgFile.rotateFrame')
+        cmds.connectAttr('place2dTexture_ColCh.mirrorU', 'ColorCheckImgFile.mirrorU')
+        cmds.connectAttr('place2dTexture_ColCh.mirrorV', 'ColorCheckImgFile.mirrorV')
+        cmds.connectAttr('place2dTexture_ColCh.stagger', 'ColorCheckImgFile.stagger')
+        cmds.connectAttr('place2dTexture_ColCh.wrapU', 'ColorCheckImgFile.wrapU')
+        cmds.connectAttr('place2dTexture_ColCh.wrapV', 'ColorCheckImgFile.wrapV')
+        cmds.connectAttr('place2dTexture_ColCh.repeatUV', 'ColorCheckImgFile.repeatUV')
+        cmds.connectAttr('place2dTexture_ColCh.offset', 'ColorCheckImgFile.offset')
+        cmds.connectAttr('place2dTexture_ColCh.rotateUV', 'ColorCheckImgFile.rotateUV')
+        cmds.connectAttr('place2dTexture_ColCh.noiseUV', 'ColorCheckImgFile.noiseUV')
+        cmds.connectAttr('place2dTexture_ColCh.vertexUvOne', 'ColorCheckImgFile.vertexUvOne')
+        cmds.connectAttr('place2dTexture_ColCh.vertexUvTwo', 'ColorCheckImgFile.vertexUvTwo')
+        cmds.connectAttr('place2dTexture_ColCh.vertexUvThree', 'ColorCheckImgFile.vertexUvThree')
+        cmds.connectAttr('place2dTexture_ColCh.vertexCameraOne', 'ColorCheckImgFile.vertexCameraOne')
+        cmds.connectAttr('place2dTexture_ColCh.outUV', 'ColorCheckImgFile.uv')
+        cmds.connectAttr('place2dTexture_ColCh.outUvFilterSize', 'ColorCheckImgFile.uvFilterSize')
 
         cmds.connectAttr('ColorCheckImgFile.outColor', 'ColorCheckMtl.outColor')
 
@@ -251,5 +255,56 @@ class ColorChecker:
 
         cmds.connectAttr(CreateFile + '.outColor', ColorCheckMtl + '.diffuseColor')
 
-# ColorChecker()
 
+
+    def deleteAll(self):
+
+        cmds.delete('ColorCheckerGRP')
+
+        cmds.select('ColorCheckVrayMtl', allDagObjects=False, noExpand=True)
+        cmds.select('VRayCol_SG', allDagObjects=False, noExpand=True, add=True)
+        cmds.select('VrayColorCheckImgFile', allDagObjects=False, noExpand=True, add=True)
+        cmds.select('place2dTexture_VrayColCh', allDagObjects=False, noExpand=True, add=True)
+
+        cmds.select('ColorCheckMtl', allDagObjects=False, noExpand=True, add=True)
+        cmds.select('SurfaceCol_SG', allDagObjects=False, noExpand=True, add=True)
+        cmds.select('ColorCheckImgFile', allDagObjects=False, noExpand=True, add=True)
+        cmds.select('place2dTexture_ColCh', allDagObjects=False, noExpand=True, add=True)
+
+        cmds.select('Chrome_Mtl', allDagObjects=False, noExpand=True, add=True)
+        cmds.select('VRayC_SG', allDagObjects=False, noExpand=True, add=True)
+
+        cmds.select('Grey_Mtl', allDagObjects=False, noExpand=True, add=True)
+        cmds.select('VRayG_SG', allDagObjects=False, noExpand=True, add=True)
+
+        cmds.delete()
+
+        # if cmds.objExists(self.ColorChecker_GRP):
+        #     cmds.delete('ColorCheckerGRP')
+        #
+        #     cmds.select('ColorCheckVrayMtl', allDagObjects=False, noExpand=True)
+        #     cmds.select('VRayCol_SG', allDagObjects=False, noExpand=True, add=True)
+        #     cmds.select('VrayColorCheckImgFile', allDagObjects=False, noExpand=True, add=True)
+        #     cmds.select('place2dTexture_VrayColCh', allDagObjects=False, noExpand=True, add=True)
+        #
+        #     cmds.select('ColorCheckMtl', allDagObjects=False, noExpand=True)
+        #     cmds.select('SurfaceCol_SG', allDagObjects=False, noExpand=True, add=True)
+        #     cmds.select('ColorCheckImgFile', allDagObjects=False, noExpand=True, add=True)
+        #     cmds.select('place2dTexture_ColCh', allDagObjects=False, noExpand=True, add=True)
+        #
+        #     cmds.select('Chrome_Mtl', allDagObjects=False, noExpand=True)
+        #     cmds.select('VRayC_SG', allDagObjects=False, noExpand=True, add=True)
+        #
+        #     cmds.select('Grey_Mtl', allDagObjects=False, noExpand=True)
+        #     cmds.select('VRayG_SG', allDagObjects=False, noExpand=True, add=True)
+        #
+        #     cmds.delete()
+        #
+        #     print("reset")
+        #
+        # else:
+        #     print("Warning: No ColorCheckerGRP exists.")
+
+
+
+        pass
