@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1144</width>
-    <height>677</height>
+    <width>1120</width>
+    <height>665</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1120</width>
+    <height>665</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -33,6 +39,12 @@
    <enum>Qt::ToolButtonIconOnly</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>1120</width>
+     <height>629</height>
+    </size>
+   </property>
    <property name="styleSheet">
     <string notr="true">QWidget{
 	background-color: rgb
@@ -62,7 +74,7 @@ QToolButton:hover{
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>sourceimages/icon_resources/filter.png</normaloff>sourceimages/icon_resources/filter.png</iconset>
+      <normaloff>sourceimages/icon_resources/filter2.png</normaloff>sourceimages/icon_resources/filter2.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -99,7 +111,7 @@ QToolButton:hover{
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>824</width>
+       <width>828</width>
        <height>571</height>
       </rect>
      </property>
@@ -121,7 +133,7 @@ QToolButton:hover{
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>821</width>
+        <width>826</width>
         <height>818</height>
        </rect>
       </property>
@@ -144,67 +156,8 @@ QToolButton:hover{
        <property name="spacing">
         <number>4</number>
        </property>
-       <item row="0" column="0">
-        <widget class="QToolButton" name="toolButton">
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>130</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>ArrowCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QToolButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border: 0px solid;
-}
-QToolButton:hover{
-	background-color: rgb(85, 170, 255);
-}</string>
-         </property>
-         <property name="text">
-          <string>sdfsdfsadf</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normalon>../../HDRI/HDRIHaven/Mini/chinese_garden_4k_mini.jpg</normalon>
-          </iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>200</width>
-           <height>100</height>
-          </size>
-         </property>
-         <property name="popupMode">
-          <enum>QToolButton::DelayedPopup</enum>
-         </property>
-         <property name="toolButtonStyle">
-          <enum>Qt::ToolButtonTextUnderIcon</enum>
-         </property>
-         <property name="autoRaise">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
        <item row="3" column="2">
         <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="0">
-        <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -242,6 +195,216 @@ QToolButton:hover{
          </property>
         </spacer>
        </item>
+       <item row="3" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0">
+        <widget class="QToolButton" name="toolButton">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QToolButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border: 0px solid;
+}
+QToolButton:hover{
+	background-color: rgb(85, 170, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>sdfsdfsadf</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normalon>E:/HDRI/Mini_HDRI/06_kapellen_townsquare2.jpg</normalon>
+          </iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="popupMode">
+          <enum>QToolButton::DelayedPopup</enum>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
+         </property>
+         <property name="autoRaise">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QToolButton" name="toolButton_3">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QToolButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border: 0px solid;
+}
+QToolButton:hover{
+	background-color: rgb(85, 170, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>sdfsdfsadf</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normalon>E:/HDRI/Mini_HDRI/06_kapellen_townsquare2.jpg</normalon>
+          </iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="popupMode">
+          <enum>QToolButton::DelayedPopup</enum>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
+         </property>
+         <property name="autoRaise">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QToolButton" name="toolButton_2">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QToolButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border: 0px solid;
+}
+QToolButton:hover{
+	background-color: rgb(85, 170, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>sdfsdfsadf</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normalon>E:/HDRI/Mini_HDRI/06_kapellen_townsquare2.jpg</normalon>
+          </iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="popupMode">
+          <enum>QToolButton::DelayedPopup</enum>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
+         </property>
+         <property name="autoRaise">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="3">
+        <widget class="QToolButton" name="toolButton_4">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QToolButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border: 0px solid;
+}
+QToolButton:hover{
+	background-color: rgb(85, 170, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>sdfsdfsadf</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normalon>E:/HDRI/Mini_HDRI/06_kapellen_townsquare2.jpg</normalon>
+          </iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="popupMode">
+          <enum>QToolButton::DelayedPopup</enum>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
+         </property>
+         <property name="autoRaise">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -277,6 +440,9 @@ QToolButton:hover{
       <width>200</width>
       <height>40</height>
      </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <item>
      <property name="text">
@@ -394,7 +560,7 @@ QPushButton:hover{
 }</string>
     </property>
     <property name="text">
-     <string>Color Checker</string>
+     <string>Create Color Checker</string>
     </property>
    </widget>
    <widget class="QListView" name="FolderListView">
@@ -443,8 +609,8 @@ QPushButton:hover{
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1144</width>
-     <height>21</height>
+     <width>1120</width>
+     <height>18</height>
     </rect>
    </property>
   </widget>

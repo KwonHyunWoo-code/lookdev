@@ -1,52 +1,53 @@
 # -*- coding: utf-8 -*-
 
-import maya.cmds as cmds
+import maya.cmds as cm
 import pymel.core as pm
+#import mtoa.utils as mutils;
 import os, sys
 
 
 class Browser:
 
 
-    ## 파일 경로 설정 및 sourceimages 폴더 경로 설정
+    ## �일 경로 �정 �sourceimages �더 경로 �정
 
-    ### SourceDrive 는 해당 드라이브
-    ### HDR_SOURCE_BASEPATH 는 HDR 이미지가 있는 상위 폴더
+    ### SourceDrive �당 �라�브
+    ### HDR_SOURCE_BASEPATH HDR ��지가 �는 �위 �더
 
-    SourceDrive = "D:\\\\"
+    SourceDrive = "E:\\\\"
     HDR_SOURCE_BASEPATH = SourceDrive + "HDRI\\"
 
 
     def __init__(self):
 
-        ### 현재 파일 경로
+        ### �재 �일 경로
         self.HDR_FOLDER = os.path.dirname(os.path.abspath(__file__))
         self.HDR_FOLDER_FullPath = os.path.abspath(__file__)
 
-        ### HDRI 폴더 내에 하위폴더 이름 리스트
+        ### HDRI �더 �에 �위�더 �름 리스
         self.foundFolder_NameList = self.getFolderBaseNameFromFolderList(self.FindFolder(self.HDR_SOURCE_BASEPATH))
         #print(self.foundFolder_NameList)
 
-        ### HDRI 폴더 내에 하위폴더 경로 리스트
+        ### HDRI �더 �에 �위�더 경로 리스
         self.foundFolder_PathList = self.FindFolder(self.HDR_SOURCE_BASEPATH)
-        #print(self.foundFolder_Path)
+        #print(self.foundFolder_PathList)
 
-        ### 해당 폴더의 MINI 폴더 경로
+        ### �당 �더MINI �더 경로
         self.MiniDir = self.FindFolder(self.foundFolder_PathList[1])
         print(self.MiniDir)
 
-        ### HDRI MINI 폴더 내에 있는 파일 리스트
+        ### HDRI MINI �더 �에 �는 �일 리스
         self.MiniFilePathList = self.FindFilesList(self.MiniDir[0])
         print(self.MiniFilePathList)
 
-        ### 해당 HDRI 폴더 내에 있는 파일 리스트
+        ### �당 HDRI �더 �에 �는 �일 리스
         #self.HDRFileName = self.getFileNameList(self.MiniFullPathList)
         #print(self.HDRFileName)
 
 
     def getFolderBaseNameFromFolderList(self, folderlist):
         """
-        폴더 리스트의 각각의 경로에서 basename을 return
+        �더 리스�의 각각경로�서 basenamereturn
         :param folderlist:
         :return: folderbasenamelist
         """
@@ -60,7 +61,7 @@ class Browser:
 
     def FindFolder(self, path):
         """
-        해당 경로의 하위 목록을 검색하여 리스트로 반환
+        �당 경로�위 목록검�하리스�로 반환
         :param path:
         :return searchedPathList:
         """
@@ -131,23 +132,28 @@ class Browser:
         #     return False
 
     def CreateVrayDomeLight(self):
-        pass
-        #
-        #     createVrayDomeLight = cm.shadingNode('VRayLightDomeShape', name='Env_LTShape', asLight=True)
-        #
-        #     cm.setAttr(createVrayDomeLight + '.useDomeTex', 1)
-        #
-        #     createFile = cm.shadingNode('file', name='envfile', asTexture=True, isColorManaged=True)
-        #     cmds.setAttr(createFile + ".filterType", 0)
-        #     # cmds.setAttr(CreateFile + ".fileTextureName", "???????????---path---??????????????", type="string")
-        #
-        #     createVrayPlaceEnvTex = cm.shadingNode('VRayPlaceEnvTex', name="VrayPlaceEnvTex_envfile", asUtility=True)
-        #
-        #     createPlace2dTexture = cm.shadingNode('place2dTexture', name="place2dTexture_envfile", asUtility=True)
-        #
-        #     cm.connectAttr(createPlace2dTexture + ".uv", createVrayPlaceEnvTex + ".outUV")
-        #     cm.connectAttr(createVrayPlaceEnvTex + '.outUV', createFile + '.uv')
-        #     cm.connectAttr(createFile + '.outColor', createVrayDomeLight + ".domeTex")
+
+
+        createVrayDomeLight = cm.shadingNode('VRayLightDomeShape', name='Env_LTShape', asLight=True)
+
+        cm.setAttr(createVrayDomeLight + '.useDomeTex', 1)
+
+        createFile = cm.shadingNode('file', name='envfile', asTexture=True, isColorManaged=True)
+        cm.setAttr(createFile + ".filterType", 0)
+        # cmds.setAttr(CreateFile + ".fileTextureName", "???????????---path---??????????????", type="string")
+
+        createVrayPlaceEnvTex = cm.shadingNode('VRayPlaceEnvTex', name="VrayPlaceEnvTex_envfile", asUtility=True)
+
+        createPlace2dTexture = cm.shadingNode('place2dTexture', name="place2dTexture_envfile", asUtility=True)
+
+        cm.connectAttr(createPlace2dTexture + ".uv", createVrayPlaceEnvTex + ".outUV")
+        cm.connectAttr(createVrayPlaceEnvTex + '.outUV', createFile + '.uv')
+        cm.connectAttr(createFile + '.outColor', createVrayDomeLight + ".domeTex")
+
+    def CreateAnorldDomeLight(self):
+
+        mutils.createLocator("aiSkyDomeLight", asLight=True)
+
 
     def setHDRTex(self):
 
